@@ -2,6 +2,7 @@
 session_start();
 include "config/config.php";
 
+
 if (isset($_SESSION['id'])) {
     $idu = $_SESSION['id'];
     $_SESSION['cart'] = $idu;
@@ -24,7 +25,7 @@ if (isset($_SESSION['id'])) {
             $is_connect->query($insert_query);
            
         }
-    }
+    } 
 }
 // Query untuk menampilkan detail produk dengan inner join
 // $query_detail_produk = "SELECT id_user, id_produk_beli, quantity, nama_produk, harga from keranjang inner join produk on produk.id = keranjang.id_produk_beli where id_user =" .$idu. "and id_produk_beli = " .$id_produk;

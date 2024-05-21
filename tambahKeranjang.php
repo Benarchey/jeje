@@ -1,24 +1,29 @@
 <?php
-include 'config/config.php'; // Pastikan path ke config benar
+session_start();
+header('Content-Type: application/json');
 
-header('Content-Type: application/json'); // Mengatur header konten sebagai JSON
-
-if (isset($_POST['productForm'])) {
-    // Mengambil data dari POST request
-    $produkId = $_POST['produkID'];
-
-    // Ambil data produk dari database berdasarkan ID
-    $query = "SELECT * FROM produk WHERE id = '$produkId'";
-    $run = mysqli_query($is_connect, $query);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_POST['produkId'])) {
+    $produkId = $_POST['produkId'];
     
-    if (mysqli_num_rows($run) > 0) {
-      while($row = $run->fetch_assoc()){
-        echo $row['id'];
-      }
-        echo json_encode(['status' => 'success', 'message' => 'Produk berhasil ditambahkan ke keranjang.']);
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'Produk tidak ditemukan.']);
+    // Tambahkan produk ke keranjang (misalnya, menggunakan session)
+    if (!isset($_SESSION['cart'][$produkId])) {
+      $_SESSION['cart'] = [];
     }
+    if (isset($_SESSION[$produkId])){
+      $_SESSION[$produkId]['quantity']++;
+    } else {
+      $_SESSION['cart'][$produkId]['quantity'] = 1;
+    }
+
+    echo json_encode([
+      'status' => 'success', 
+      'message' => 'Produk berhasil ditambahkan ke keranjang',
+      'produkId' => $produkId // Kirim kembali ID produk
+    ]);
+  } else {
+    echo json_encode(['status' => 'error', 'message' => 'ID produk tidak ditemukan']);
+  }
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Metode tidak valid.']);
+  echo json_encode(['status' => 'error', 'message' => 'Metode permintaan tidak valid']);
 }

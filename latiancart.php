@@ -1,7 +1,7 @@
 <?php
 include "config/config.php";
 
-#beni
+#hitesting
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
