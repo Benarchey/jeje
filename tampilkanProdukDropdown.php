@@ -58,7 +58,7 @@
 
                 if ($sortBy == 'popularity') {
                     // Jika sortBy adalah popularitas, sesuaikan query dengan kolom yang sesuai dengan popularitas di tabel database
-                    $sql .= "SELECT * FROM produk ORDER BY kolom_popularitas DESC";
+                    $sql .= "SELECT * FROM produk ORDER BY jumlah_klik DESC";
                 } elseif ($sortBy == 'low-high') {
                     // Jika sortBy adalah harga rendah ke tinggi, sesuaikan query dengan kolom harga rendah ke tinggi di tabel database
                     $sql .= "SELECT * FROM produk ORDER BY harga ASC";
@@ -67,7 +67,7 @@
                     $sql .= "SELECT * FROM produk ORDER BY harga DESC";
                 } else {
                     // Jika sortBy tidak valid atau tidak ada yang dipilih, beri nilai kosong ke $sql untuk memastikan tidak ada produk yang ditampilkan
-                    $sql = "";
+                    $sql = "Select * from produk";
                 }
 
                 // Eksekusi query
@@ -81,7 +81,7 @@
                                 <div class="product text-center">
                                     <div class="mb-3 position-relative">
                                         <div class="badge text-white bg-"></div><a class="d-block" href="detail.php"><img
-                                                class="img-fluid w-100" src="img/product-12.jpg" alt="..."></a>
+                                                class="img-fluid w-100" src="img/<?php echo $row['image'] ?>" alt="..."></a>
                                         <div class="product-overlay">
                                             <ul class="mb-0 list-inline">
                                                 <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i

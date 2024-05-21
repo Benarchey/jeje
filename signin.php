@@ -6,7 +6,7 @@ if(isset($_POST["signin"])){
    $username = $_POST["username"];
    $password = $_POST["password"];  
 
-   $sql = "insert into user (name, password) values ('$username', $password)";
+   $sql = "insert into user (name, password) values ('$username', '$password')";
 
    if($is_connect->query($sql)){
     header('Location: login.php');

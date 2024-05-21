@@ -126,7 +126,7 @@ $hasil = mysqli_query($is_connect, $query);
                 <div class="product text-center" data-produk-id="<?php echo $result['id'] ?>">
                   <div class="position-relative mb-3">
                     <div class="badge text-white bg-primary">Sale</div><a class="d-block" href="detail.php"><img
-                        class="img-fluid w-100" src="img/product-2.jpg" alt="..."></a>
+                        class="img-fluid w-100" src="img/<?= $result['image']?>" alt="..."></a>
                     <div class="product-overlay">
                       <ul class="mb-0 list-inline">
                         <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i

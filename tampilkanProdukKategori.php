@@ -64,7 +64,7 @@
                                 <div class="product text-center">
                                     <div class="mb-3 position-relative">
                                         <div class="badge text-white bg-"></div><a class="d-block" href="detail.php"><img
-                                                class="img-fluid w-100" src="img/product-12.jpg" alt="..."></a>
+                                                class="img-fluid w-100" src="img/<?= $row['image']?>" alt="..."></a>
                                         <div class="product-overlay">
                                             <ul class="mb-0 list-inline">
                                                 <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i

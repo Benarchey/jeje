@@ -5,7 +5,7 @@ if(isset($_POST['submit'])){
     $username = $_POST['name'];
     $password = $_POST['password'];
 
-    $sql = mysqli_query($is_connect, "select * from user where name = '$username' and password = $password");
+    $sql = mysqli_query($is_connect, "select * from user where username = '$username' and password = '$password'");
     if(mysqli_num_rows($sql) > 0){
       session_start();
       $data = mysqli_fetch_assoc($sql);
@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
       $_SESSION['tipe_user'] = $data['tipe_user'];
 
       if($_SESSION['tipe_user'] == 'admin'){
-        header('Location: admin.php');
+        header('Location: admin/admin.php');
       }else{
         header('Location: index.php');
       }
